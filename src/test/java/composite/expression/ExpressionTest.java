@@ -60,3 +60,4 @@ public class ExpressionTest {
     public void testToString() {
         assertEquals("((3-((4/2)*3))+4)", this.exp6.toString());
     }
+}
