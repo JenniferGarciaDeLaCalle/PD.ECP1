@@ -6,47 +6,30 @@ public class Preparado extends State {
 		super(estado);
 	}
 
-	private Link link;
-
-	@Override
-	public void abrir() {
-		if (getEstado() == Estado.PREPARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void abrir(Conexion conexion) {
 	}
 
 	@Override
-	public void cerrar() {
-		if (getEstado() == Estado.PREPARADO) {
-			setEstado(Estado.CERRADO);
-		}
+	public void cerrar(Conexion conexion) {
+		conexion.state = (new Cerrado(Estado.CERRADO));
 	}
-	
+
 	@Override
-	public void parar() {
-		if (getEstado() == Estado.PREPARADO) {
-			setEstado(Estado.PARADO);
-		}
+	public void parar(Conexion conexion) {
+		conexion.state = (new Parado(Estado.PARADO));
 	}
-	
-	@Override
-	public void iniciar() {
-		if (getEstado() == Estado.PREPARADO) {
-		}
+
+	public void iniciar(Conexion conexion) {
 	}
-	
+
 	@Override
-	public void enviar(String msg) {
-		if (getEstado() == Estado.PREPARADO) {
-			this.link.enviar(msg);
-			setEstado(Estado.ESPERANDO);
-		}
+	public void enviar(Conexion conexion, String msg) {
+		conexion.getLink().enviar(msg);
+		conexion.state = (new Esperando(Estado.ESPERANDO));
 	}
-	
+
 	@Override
-	public void recibir(int respuesta) {
-		if (getEstado() == Estado.PREPARADO) {
-			 throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void recibir(Conexion conexion, int respuesta) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
 }

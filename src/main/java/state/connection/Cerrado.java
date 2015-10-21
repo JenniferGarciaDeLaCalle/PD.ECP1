@@ -7,43 +7,30 @@ public class Cerrado extends State {
 	}
 
 	@Override
-	public void abrir() {
-		if (getEstado() == Estado.CERRADO) {
-			setEstado(Estado.PREPARADO);
-		}
+	public void abrir(Conexion conexion) {
+		conexion.state = (new Preparado(Estado.PREPARADO));
 	}
-	
-	@Override
-	public void cerrar() {
-		if (getEstado() == Estado.CERRADO) {
-		}
+
+	public void cerrar(Conexion conexion) {
 	}
-	
+
 	@Override
-	public void parar() {
-		if (getEstado() == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void parar(Conexion conexion) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
-	
+
 	@Override
-	public void iniciar() {
-		if (getEstado() == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void iniciar(Conexion conexion) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
-	
+
 	@Override
-	public void enviar(String msg) {
-		if (getEstado() == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void enviar(Conexion conexion, String msg) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
-	
+
 	@Override
-	public void recibir(int respuesta) {
-		if (getEstado() == Estado.CERRADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void recibir(Conexion conexion, int respuesta) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
 }

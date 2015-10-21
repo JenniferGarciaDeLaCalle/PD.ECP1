@@ -7,43 +7,30 @@ public class Parado extends State {
 	}
 
 	@Override
-	public void abrir() {
-		if (getEstado() == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void abrir(Conexion conexion) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
-	
+
 	@Override
-	public void cerrar() {
-		if (getEstado() == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void cerrar(Conexion conexion) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
-	
-	@Override
-	public void parar() {
-		if (getEstado() == Estado.PARADO) {
-		}
+
+	public void parar(Conexion conexion) {
 	}
-	
+
 	@Override
-	public void iniciar() {
-		if (getEstado() == Estado.PARADO) {
-			setEstado(Estado.PREPARADO);
-		}
+	public void iniciar(Conexion conexion) {
+		conexion.state = (new Preparado(Estado.PREPARADO));
 	}
-	
+
 	@Override
-	public void enviar(String msg) {
-		if (getEstado() == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void enviar(Conexion conexion, String msg) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
-	
+
 	@Override
-	public void recibir(int respuesta) {
-		if (getEstado() == Estado.PARADO) {
-			throw new UnsupportedOperationException("Acción no permitida... ");
-		}
+	public void recibir(Conexion conexion, int respuesta) {
+		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
 }
